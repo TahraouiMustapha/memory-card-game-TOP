@@ -1,29 +1,29 @@
+import Card from "./card";
 
-// fake data
 
-function createData(number) {
+function createData(obj) {
     return {
         id: crypto.randomUUID(),
-        number: number, // consider it content
+        obj: obj, // consider it content
     }
 }
-const arrayOfData = [
-    createData(1), 
-    createData(2), 
-    createData(3), 
-    createData(4), 
-]
 
 // to manipulate the number of clicks on each card 
 const mapForClicks = new Map();
 
 // to remove later
 const cardStyle = {
-    width: '32px',cursor:'pointer', textAlign: 'center', backgroundColor:'Highlight'
+    width: '100px', height: '100px', margin: '5px'
+    ,cursor:'pointer', backgroundColor: 'Highlight'
 }
 
-export default function CardsContainer({style, setScore}) {
+export default function CardsContainer({style, setScore, arrayOfImages}) {
 
+    const arrayOfData = arrayOfImages.map((imgObj)=> {
+        return createData(imgObj)
+    })
+
+    console.log(arrayOfData[0].id)
 
     function handleCardClick(e) {
         const cardsId = e.target.dataset.id;
@@ -48,14 +48,16 @@ export default function CardsContainer({style, setScore}) {
 
     return (
         <div className="cards-container" style={{...style, 
-        width: '300px', 
+        minWidth: '300px', 
         display: 'flex', 
         justifyContent: 'space-around'}}>
             {arrayOfData.map( (data) => { 
-                return <div key={data.id} 
-                        data-id={data.id}
-                        style={cardStyle}
-                        onClick={handleCardClick}>{data.number}</div>
+                return <Card style={cardStyle}/>
+
+                // return <div key={data.id} 
+                //         data-id={data.id}
+                //         style={cardStyle}
+                //         onClick={handleCardClick}>{data.number}</div>
                 })}
         </div>
     )

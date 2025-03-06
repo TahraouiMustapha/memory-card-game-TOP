@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import getImages from "./getImages"
 import CardsContainer from "./cardsContainer"
 
 function Result({score = {current: 0, best: 0}}) {
@@ -16,10 +17,23 @@ export default function Main() {
         best: 0
     })
 
+    const [arrayOfImages, setArrayOfImages] = useState([])
+
+    useEffect(()=> {
+        const fetchImages = async ()=> {
+            const myImages = await getImages()
+            setArrayOfImages(myImages)
+        }
+        fetchImages()
+    }, [])
 
     return (
         <div className="main">
-            <CardsContainer setScore={setScore} style={{marginTop: '32px'}}/>
+            <CardsContainer 
+            arrayOfImages = {arrayOfImages}
+            setScore={setScore} 
+            style={{marginTop: '32px'}}/>
+            
             <Result score={score}/>
         </div>
     )
