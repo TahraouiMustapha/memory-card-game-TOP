@@ -1,10 +1,14 @@
-export default function Card(props)  {
+
+
+export default function Card({style, dataObj, handleCardClick})  {
     return (
-        <div className="card" style={props.style}>
+        <div className="card" 
+        style={style} 
+        data-id={dataObj.id}
+        onClick={handleCardClick}>
             <div>
-                <img src="#" alt="pokemeon" style={{width: '100%'}}/>
+                <img src={dataObj.src} alt="pokemeon" style={{width: '100%'}}/>
             </div>
-            <p className="name"></p>
         </div>
     )
 }
