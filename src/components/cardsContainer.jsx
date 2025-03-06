@@ -1,4 +1,6 @@
 import Card from "./card";
+import { useEffect, useState } from "react";
+import randomize from "./randomize";
 
 // to manipulate the number of clicks on each card 
 const mapForClicks = new Map();
@@ -9,7 +11,8 @@ const cardStyle = {
     ,cursor:'pointer', backgroundColor: 'Highlight'
 }
 
-export default function CardsContainer({style, setScore, arrayOfData}) {
+export default function CardsContainer({style, score,setScore, arrayOfData}) {
+    const [cardsArray, setCardsArray] = useState([]);
 
     function handleCardClick(e) {
         const cardsId = e.currentTarget.dataset.id;
@@ -32,12 +35,16 @@ export default function CardsContainer({style, setScore, arrayOfData}) {
         
     }
 
+    useEffect(()=> {
+        setCardsArray(randomize(arrayOfData))
+    }, [arrayOfData, score])
+
     return (
         <div className="cards-container" style={{...style, 
         minWidth: '300px', 
         display: 'flex', 
         justifyContent: 'space-around'}}>
-            {arrayOfData.map((data) => { 
+            {cardsArray.map((data) => { 
                 return <Card 
                 style={cardStyle}
                 key={data.id}

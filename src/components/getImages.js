@@ -9,16 +9,18 @@ export default async function fetchData() {
         const arrayOfImages = pokemonNames.map(async (name)=> { 
             try {
                 const myPromise = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {mode: 'cors'});
+
+                if(!myPromise.ok) throw new Error('no data found');
+                
                 const myFinalResult = await myPromise.json()
                 return myFinalResult
             } catch(err) {
-                console.log(err)
+                throw new Error(err);
             }
-            return null;
         })
 
-        
         return Promise.all(arrayOfImages);
+        
     } catch(err){
         throw new Error('Error in fetching data:',err)
     }
