@@ -30,11 +30,14 @@ export default function CardsContainer({style, setScore}) {
         if(!mapForClicks.has(cardsId)) {
             console.log('add to score')
             mapForClicks.set(cardsId, 1)
-            setScore(prevScore => prevScore += 1)
+            setScore(prevScore => ({
+                ...prevScore,
+                current: prevScore.current + 1
+            }))
         } else if(mapForClicks.get(cardsId) >= 1) {
             console.log('reset, have clicked more than once' )
             mapForClicks.clear()
-            setScore(0)
+            setScore(prevScore => ({...prevScore, current: 0}))
         }
 
         
