@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import getImages from "./getImages"
+import fetchData from "./getImages"
 import CardsContainer from "./cardsContainer"
+
 
 function Result({score = {current: 0, best: 0}}) {
     return (
@@ -17,12 +18,19 @@ export default function Main() {
         best: 0
     })
 
-    const [arrayOfImages, setArrayOfImages] = useState([])
+    const [arrayOfData, setArrayOfData] = useState([])
 
     useEffect(()=> {
         const fetchImages = async ()=> {
-            const myImages = await getImages()
-            setArrayOfImages(myImages)
+            const data = await fetchData();
+            const imgs = data.map((obj)=>{
+                return obj.sprites.front_default
+            })
+            // assign to each obj an id
+            const myFinalArray = imgs.map((imgObj)=> {
+                return createData(imgObj)
+            })
+            setArrayOfData(myFinalArray)
         }
         fetchImages()
     }, [])
@@ -30,11 +38,17 @@ export default function Main() {
     return (
         <div className="main">
             <CardsContainer 
-            arrayOfImages = {arrayOfImages}
+            arrayOfData = {arrayOfData}
             setScore={setScore} 
             style={{marginTop: '32px'}}/>
-            
             <Result score={score}/>
         </div>
     )
+}
+
+function createData(imgSrc) {
+    return {
+        id: crypto.randomUUID(), 
+        src: imgSrc
+    }
 }
