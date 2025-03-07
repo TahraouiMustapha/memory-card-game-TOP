@@ -26,13 +26,23 @@ export default function CardsContainer({score,setScore, arrayOfData}) {
                     : prevScore.best
             }))
         }
-
-        
     }
 
     useEffect(()=> {
-        setCardsArray(randomize(arrayOfData))
+        const myCards = document.querySelectorAll('.card');
+        [...myCards].forEach((card)=>{
+            card.classList.add('shuffle');
+        })
+
+        setTimeout(()=> {
+            [...myCards].forEach((card)=>{
+                card.classList.remove('shuffle');
+            })
+            setCardsArray(randomize(arrayOfData))
+        }, 500)
+
     }, [arrayOfData, score])
+
 
     return (
         <div className="cards-container" >

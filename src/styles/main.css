@@ -25,6 +25,27 @@
     transition: transform 0.2s ease-in-out;
 }
 
+.card.shuffle {
+    animation-name: shuffle;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes shuffle {
+    0% {
+      transform: translateX(0);  
+    }
+
+    50% {
+        transform: translateX(15%) rotate(8deg);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .cards-container .card img {
     width: 100%;
 }
