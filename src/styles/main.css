@@ -25,6 +25,12 @@
     transition: transform 0.2s ease-in-out;
 }
 
+.cards-container .card img {
+    width: 100%;
+}
+
+
+
 .cards-container .card:hover {
     transform: scale(1.05)
 }
@@ -36,4 +42,39 @@
 .results h2 {
     font-size: 1.1em;
     color: #ec4899;
+}
+
+/* responsive for desktop screens */
+
+@media  (min-width:700px) {
+    .main {
+        flex: 1;
+        padding: 3rem 0;
+    }
+
+    .cards-container {
+        --card-size: 130px;
+        gap: 24px;
+    }
+
+    .cards-container .card > div {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+
+
+    .cards-container .card img {
+        width: 80%;
+    }
+
+    .results {
+        margin-top: 40px;
+    }
+
+    .results h2 {
+        font-size: 1.4em;
+    }
+
 }

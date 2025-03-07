@@ -35,5 +35,23 @@
   width: 32px;
 }
 
+/* responsive for desktop screens */
+
+@media  (min-width:700px) {
+    #root {
+      grid-template-rows: 1fr 8fr;
+    }
+
+    .nav {
+      justify-content: space-between;
+      padding-left: 2rem;
+    }
+
+    .nav .logo {
+      flex-direction: row-reverse;
+      gap: 12px;
+    }
+}
+
 
 
