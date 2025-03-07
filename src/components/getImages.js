@@ -2,7 +2,7 @@
 export default async function fetchData() {
 
     try{
-        const myPromise = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10', {mode: 'cors'})
+        const myPromise = await fetch('https://pokeapi.co/api/v2/pokemon?limit=9', {mode: 'cors'})
         const myResults = await myPromise.json(); 
 
         const pokemonNames = myResults.results.map((obj) => obj.name);

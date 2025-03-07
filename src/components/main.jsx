@@ -40,8 +40,7 @@ export default function Main() {
             <CardsContainer 
             arrayOfData = {arrayOfData}
             score={score}
-            setScore={setScore} 
-            style={{marginTop: '32px'}}/>
+            setScore={setScore} />
             <Result score={score}/>
         </div>
     )

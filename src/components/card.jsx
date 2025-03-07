@@ -1,9 +1,8 @@
 
 
-export default function Card({style, dataObj, handleCardClick})  {
+export default function Card({dataObj, handleCardClick})  {
     return (
-        <div className="card" 
-        style={style} 
+        <div className="card"  
         data-id={dataObj.id}
         onClick={handleCardClick}>
             <div>
