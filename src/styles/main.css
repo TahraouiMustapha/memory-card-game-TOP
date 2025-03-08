@@ -65,6 +65,13 @@
     color: #ec4899;
 }
 
+.loading {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    font-size: 3em;
+    color: #ec4899;
+}
+
 /* responsive for desktop screens */
 
 @media  (min-width:700px) {

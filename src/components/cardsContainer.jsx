@@ -46,7 +46,9 @@ export default function CardsContainer({score,setScore, arrayOfData}) {
 
     return (
         <div className="cards-container" >
-            {cardsArray.map((data) => { 
+            {cardsArray.length === 0
+            ? <div className="loading">Loading ...</div>
+            :cardsArray.map((data) => { 
                 return <Card 
                 key={data.id}
                 dataObj={data}
