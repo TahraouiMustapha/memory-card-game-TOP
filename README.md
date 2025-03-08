@@ -13,3 +13,10 @@ If you are developing a production application, we recommend using TypeScript an
 # memory-card-game-TOP
 
 Brain icon is created By <a href="https://www.flaticon.com/free-icons/brain" title="brain icons">Brain icons created by Freepik - Flaticon</a>
+
+## Acknowledgments
+
+I would like to extend my heartfelt thanks to 
+<a href="https://github.com/hajar-nasr"> hajar nasr</a> for their inspiring work on 
+<a href="https://github.com/hajar-nasr/the-odin-project-memory-game">Memory game</a>
+
